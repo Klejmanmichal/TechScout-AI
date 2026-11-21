@@ -1,0 +1,156 @@
+# =============================================================================
+# TechScout AI - .gitignore
+# Files and folders listed here will NOT be tracked or uploaded by Git.
+# Lines starting with "#" are comments. Lines starting with "!" are exceptions
+# (they force Git to KEEP a file that an earlier rule would have ignored).
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# 1. Python cache and compiled files
+# Python creates these automatically to run faster. They can always be rebuilt.
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+
+# -----------------------------------------------------------------------------
+# 2. Virtual environments
+# Private, per-computer copies of installed packages. Others recreate them
+# from requirements.txt / pyproject.toml instead.
+# -----------------------------------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+
+# -----------------------------------------------------------------------------
+# 3. Secrets, API keys, and local configuration  (MOST IMPORTANT SECTION)
+# Never commit real credentials. Keep a safe template in .env.example instead.
+# -----------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+secrets.json
+secrets.toml
+.streamlit/secrets.toml
+
+
+# -----------------------------------------------------------------------------
+# 4. Testing, linting, and type-checking caches
+# Temporary results from tools that check your code.
+# -----------------------------------------------------------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.hypothesis/
+.mypy_cache/
+.ruff_cache/
+.pyre/
+.pytype/
+
+
+# -----------------------------------------------------------------------------
+# 5. Build and packaging output
+# Created when a project is packaged for distribution. Always regenerable.
+# -----------------------------------------------------------------------------
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+wheels/
+pip-wheel-metadata/
+
+
+# -----------------------------------------------------------------------------
+# 6. Logs, temporary files, and local data
+# Run-time output and downloaded/scraped data that belongs only on your machine.
+# -----------------------------------------------------------------------------
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+*.bak
+.cache/
+
+# Local research / scraped / processed data (keep the code, not the data)
+data/raw/
+data/interim/
+data/processed/
+data/cache/
+output/
+outputs/
+
+# Local databases
+*.sqlite
+*.sqlite3
+*.db
+
+
+# -----------------------------------------------------------------------------
+# 7. Jupyter notebooks
+# Notebooks themselves ARE kept; only their automatic backup folders are ignored.
+# -----------------------------------------------------------------------------
+.ipynb_checkpoints/
+
+
+# -----------------------------------------------------------------------------
+# 8. Web interface (for a possible future frontend)
+# -----------------------------------------------------------------------------
+node_modules/
+.next/
+.nuxt/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# -----------------------------------------------------------------------------
+# 9. Code editors and IDEs
+# Personal editor settings that differ from person to person.
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+
+# -----------------------------------------------------------------------------
+# 10. Operating-system files
+# Junk files created automatically by Windows, macOS, and Linux.
+# -----------------------------------------------------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Linux
+.directory
+.Trash-*
