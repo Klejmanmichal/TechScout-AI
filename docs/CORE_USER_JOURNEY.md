@@ -5,13 +5,14 @@
 | Document | Core User Journey |
 | Project phase | Phase 1 — Product Definition |
 | Status | Living document (in progress) |
-| Related documents | [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md) |
+| Related documents | [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md), [USE_CASES.md](USE_CASES.md), [MVP_SCOPE.md](MVP_SCOPE.md) |
 
 > **Status labels used in this document** (consistent with [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md))
 >
 > - **APPROVED / DECIDED** — Decisions already made.
 > - **DRAFT** — Working text under development; content may still change.
 > - **PROPOSED** — Concepts suggested for consideration that have **not** been approved.
+> - **DEFERRED** — Planned for future product development, not the initial MVP.
 > - **FUTURE** — Possible later capabilities, explicitly outside the current scope.
 > - **OPEN ITEM** — Unresolved design question, deliberately left undecided.
 >
@@ -19,7 +20,7 @@
 >
 > - The **hybrid AI interaction model** is a confirmed design decision (**DECIDED**).
 > - The **7-stage journey structure** is an **agreed working model** for product definition.
-> - Neither is yet formally recorded in the [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md#17-current-status) decision log; recording is pending.
+> - Both are recorded in the [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md#17-current-status) decision log (D8 and D9).
 > - Detailed behaviors within each stage are **DRAFT** unless labeled otherwise.
 >
 > This document describes product behavior from the user's perspective; it is **not** a technical architecture specification.
@@ -49,15 +50,15 @@
 
 This document defines the **core user journey** of TechScout AI: the path from a user's initial research request to a structured, evidence-supported **Technology Scouting Report** and subsequent follow-up research.
 
-It addresses Next Step 2 in [PRODUCT_DEFINITION.md, Section 18](PRODUCT_DEFINITION.md#18-next-steps) and is intended as a reference for later MVP scoping, use case definition, functional requirements, and technical design.
+It fulfills the product definition activity "Define the core user journey", now listed as completed in [PRODUCT_DEFINITION.md, Section 18](PRODUCT_DEFINITION.md#18-next-steps). It informed MVP scoping and use case definition, and remains a reference for functional requirements and technical design.
 
 ### Document Scope
 
-> **Important:** This document describes the **intended target user journey** for TechScout AI. It does **not** define the finalized MVP scope.
+> **Important:** This document describes the **intended target user journey** for TechScout AI. It does **not** itself define the MVP scope.
 >
-> - The MVP scope remains **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-direction--proposed)) and will be determined separately during **MVP scope refinement**.
-> - Some capabilities described here may be **proposed or future capabilities** rather than MVP functionality.
-> - Inclusion of a behavior in this journey does not imply that it will be part of the MVP.
+> - The MVP scope is **APPROVED** and defined in [MVP_SCOPE.md](MVP_SCOPE.md), the authoritative reference for which capabilities are included and at which implementation level (see also [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-scope--approved)).
+> - Some behaviors described here are **proposed or future capabilities** rather than MVP functionality; see MVP_SCOPE.md for Deferred items and exclusions.
+> - Inclusion of a behavior in this journey does not by itself imply that it is part of the MVP.
 
 ### Related Decisions
 
@@ -68,15 +69,10 @@ It builds on the following confirmed decisions from the Product Definition:
 - **D6** — Target users are **highly technical professionals and qualified specialists**.
 - **D7** — TechScout AI **amplifies technical expertise**; it is not a general-purpose chatbot.
 
-And introduces one additional confirmed decision:
+It also defines:
 
-- **Hybrid AI interaction** — The AI operates autonomously when possible while remaining consultative and transparent (see [Section 3](#3-hybrid-interaction-principles--decided)).
-
-And uses the following agreed working model:
-
-- **7-stage core user journey** — Agreed as the working model for product definition (see [Section 2](#2-journey-overview)).
-
-> **Note:** Neither the hybrid interaction decision nor the 7-stage journey is yet recorded in the Product Definition decision log. It is recommended to record them there (e.g., as D8 and D9) in a future update.
+- **D8 — Hybrid AI interaction** (DECIDED) — The AI operates autonomously when possible while remaining consultative and transparent (see [Section 3](#3-hybrid-interaction-principles--decided)).
+- **D9 — 7-stage core user journey** (agreed working model) — see [Section 2](#2-journey-overview).
 
 ---
 
@@ -122,7 +118,7 @@ The core journey consists of **seven stages**. Stages 1–6 form the primary res
 |---|---|
 | Expert-centered | The user is a qualified specialist who critically evaluates results; the AI supports, not replaces, their judgment. |
 | Autonomous by default | The AI proceeds without unnecessary questions when the request is clear. |
-| Consultative when it matters | The AI asks questions or proposes a plan only when doing so materially improves the outcome. |
+| Consultative when it matters | The AI asks questions only when doing so materially improves the outcome; for complex research, it presents a research plan for approval before main research begins. |
 | Transparent | Assumptions, scope changes, evidence quality, and uncertainty are disclosed. |
 | Iterative | Research is not strictly linear; discovery and analysis can loop, and follow-ups build on prior context. |
 | Report-oriented | The primary output is a structured Technology Scouting Report, not a chat answer. |
@@ -144,7 +140,7 @@ The core journey consists of **seven stages**. Stages 1–6 form the primary res
 | R1 | **Clear request** | Begin research immediately, without unnecessary questions. |
 | R2 | **Minor gaps** | Make reasonable assumptions, disclose them, and proceed. |
 | R3 | **Important ambiguities** | Ask **1–3 targeted questions** before proceeding. |
-| R4 | **Very broad or complex research** | Propose a **research plan** for user approval. |
+| R4 | **Very broad or complex research** | Develop a **research plan**, present it for user review and approval, and **wait for approval** before beginning the main research execution. After approval, perform the research autonomously, expanding it dynamically under R5 and R6. This approval gate applies to complex research only. |
 | R5 | **Interesting findings within scope** | Autonomously expand research when justified, and disclose the expansion. |
 | R6 | **Major new directions outside the original scope** | Notify the user and **propose** additional research rather than pursuing it unilaterally. |
 | R7 | **Follow-up questions** | Continue research while preserving the context of the ongoing research. |
@@ -222,7 +218,7 @@ Understand what the user actually needs and decide how to proceed — immediatel
    - Clear request → proceed (R1).
    - Minor gaps → state assumptions and proceed (R2).
    - Important ambiguities → ask 1–3 targeted questions (R3).
-   - Very broad or complex request → propose a research plan (R4).
+   - Very broad or complex request → develop a research plan and present it for approval; main research begins only after approval (R4).
 
 ### Expected Output
 
@@ -233,7 +229,7 @@ Depending on the case:
 | Clear request | Brief statement of interpreted objective and scope; research begins. |
 | Minor gaps | Interpreted objective, scope, and **disclosed assumptions**; research begins. |
 | Important ambiguities | **1–3 targeted questions**. Whether research pauses until answers are received or continues on provisional assumptions is an **OPEN ITEM**. |
-| Broad / complex request | A **research plan** for approval. |
+| Broad / complex request | A **research plan** for review and approval. Main research execution begins only after approval (R4). |
 | Outside product scope | See [Out-of-Scope Requests — PROPOSED](#out-of-scope-requests--proposed) below. |
 
 A research plan, when produced, should typically describe — **DRAFT**:
@@ -324,7 +320,7 @@ Find relevant technologies, innovations, and supporting technical evidence from 
 - **Uncontrolled scope creep:** Autonomous expansion must remain justified and disclosed.
 - **Missing evidence:** Absence of information found is not evidence that a technology is weak or immature (consistent with the assessment principles in the Product Definition).
 - **Low or insufficient evidence:** Research may find little, weak, or no credible evidence. See [Low-Evidence Research Path — PROPOSED](#low-evidence-research-path--proposed).
-- **Stopping research:** How the AI decides that sufficient research has been completed and moves on to synthesis is an **OPEN ITEM** (see [Section 11](#11-iterative-research--feedback-loops)).
+- **Stopping research:** The stopping principle is approved; the precise criteria for deciding that sufficient research has been completed are an **OPEN ITEM** (see [Section 11](#11-iterative-research--feedback-loops)).
 
 ---
 
@@ -333,6 +329,8 @@ Find relevant technologies, innovations, and supporting technical evidence from 
 ### Purpose
 
 Develop a technically deep and critical understanding of each relevant technology, appropriate for expert users.
+
+> **Analytical layers — APPROVED:** Technical Analysis, Comparative Analysis, and Technology Assessment are **distinct analytical layers**, even when they are combined within a single capability or journey stage (see [MVP_SCOPE.md, Section 4.1](MVP_SCOPE.md#41-capability-summary)). Journey stages do not map one-to-one to these layers: this stage includes some assessment-related analysis (e.g., maturity, feasibility), and Stage 5 includes comparison and assessment. The layers remain distinguishable in the report (Detailed Technology Analysis, Comparative Analysis, Assessment & Opportunities).
 
 ### User Input
 
@@ -360,7 +358,7 @@ If analysis reveals critical evidence gaps, return to Stage 3 for targeted addit
 
 - Analyzed technology information that can populate technology profiles.
 
-> The fields of the Technology Profile remain **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 11](PRODUCT_DEFINITION.md#11-technology-profile--proposed)).
+> The Technology Profile is an approved report element ([MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation)); its fields remain **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 11](PRODUCT_DEFINITION.md#11-technology-profile--approved-fields-proposed)).
 
 ### User Interaction
 
@@ -375,7 +373,9 @@ If analysis reveals critical evidence gaps, return to Stage 3 for targeted addit
 - **Interpretation presented as fact:** The most important transparency risk at this stage.
 - **Inconsistent maturity judgments:** Without an agreed maturity framework, maturity statements must be justified with evidence.
 
-> **OPEN ITEM:** Whether a standard maturity framework (e.g., Technology Readiness Levels) will be used has not been decided.
+> **Maturity — partially decided:** For the MVP, Technology Readiness Levels (TRL) may be used when relevant and evidence-supported (**APPROVED**, see [MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)).
+>
+> **OPEN ITEM:** The broader maturity framework, including how maturity is expressed where TRL is not relevant, has not been defined.
 
 ---
 
@@ -400,7 +400,7 @@ Turn individual analyses into an integrated view of the technology landscape tha
 
 ### Scoring and Assessment Constraint
 
-> **Status: PROPOSED / DRAFT** — Any scoring or rating framework, including the Technology Potential Score described in [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--proposed), is **provisional** and must **not** be presented as finalized.
+> **Status: PROPOSED / DRAFT** — Any scoring or rating framework, including the Technology Potential Score described in [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--approved-potential-score-draft), is **provisional** and must **not** be presented as finalized. Universal scoring is excluded from the MVP, and a formal weighted scoring model is **DEFERRED** (see [MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)).
 
 Any assessment produced must follow the agreed assessment principles:
 
@@ -443,9 +443,13 @@ Deliver the research outcome as a **structured, evidence-supported Technology Sc
 - Ensure **source traceability**: key statements are linked to their supporting sources.
 - Clearly mark sourced claims, evidence, AI interpretations, assumptions, and uncertainties.
 
+#### Report Structure — APPROVED
+
+The report follows the adaptive 9-section structure defined in [MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation) (see also [PRODUCT_DEFINITION.md, Section 10](PRODUCT_DEFINITION.md#10-standard-research-report--approved)). Not every section must appear in every report.
+
 #### Expected Report Contents — PROPOSED
 
-> **Status: PROPOSED** — The report structure remains **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 10](PRODUCT_DEFINITION.md#10-standard-research-report--proposed)). The following list describes the content the report is expected to cover; it is **not** an approved mandatory minimum.
+> **Status: PROPOSED** — The following list describes the content the report is expected to cover; it is **not** an approved mandatory minimum.
 
 - conclusions,
 - comparisons — **where relevant** to the user's research question (not mandatory in every report, e.g., when a single technology is investigated),
@@ -465,7 +469,9 @@ When evidence is insufficient, the report follows the [Low-Evidence Research Pat
 
 - The user receives and reads the report, then moves to Stage 7.
 
-> **PROPOSED:** Export formats, report length options, and the presentation format (e.g., in-app view vs. downloadable document) have not been defined.
+> **Presentation — APPROVED:** The report is presented within the application, with initially limited export capability ([MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation)).
+>
+> **OPEN ITEM:** Specific export formats and report length options have not been defined.
 
 ### Potential Failure Points & Considerations
 
@@ -510,7 +516,9 @@ Depending on the request — **DRAFT**:
 - a comparison,
 - an updated or extended report.
 
-> **OPEN ITEM:** Whether follow-ups produce a revised version of the original report, a separate supplementary report, or a conversational answer (or a combination) is **not yet decided**.
+> **Follow-up and report updates — APPROVED:** Exploratory follow-up research does not automatically modify the main report. The main report is updated when the user requests an update ([MVP_SCOPE.md, C8](MVP_SCOPE.md#c8--interactive-research--follow-up)).
+>
+> **OPEN ITEM:** The exact format of a requested report update (e.g., revised version of the report vs. separate supplement) is **not yet decided**.
 
 ### User Interaction
 
@@ -540,9 +548,12 @@ The journey is presented as sequential stages, but research is **iterative**. Th
 | Out-of-scope proposal | Stage 3/4/5 → User | Major new direction outside original scope | AI proposes, user decides (R6) |
 | Expert follow-up loop | Stage 7 → Stage 2/3 | User requests deeper research, comparisons, corrections, or new directions | User (R7) |
 
-### Loop Principles — DRAFT
+### Loop Principles
 
-- **Bounded iteration:** Autonomous loops should continue only while they materially improve the research outcome.
+> **Iterative research and stopping principle — APPROVED:** Research is iterative and autonomous. The agent stops when further research is no longer sufficiently valuable or when adequate coverage has been achieved ([MVP_SCOPE.md, C3](MVP_SCOPE.md#c3--deep-research--investigation)). The precise stopping criteria and thresholds remain **OPEN** (see below).
+
+Further loop principles — **DRAFT**:
+
 - **Transparency:** Significant iterations, scope expansions, and their reasons should be visible in the output.
 - **User control over direction:** The AI may autonomously deepen research within scope, but changes to the research objective remain the user's decision.
 - **Context continuity:** Each loop builds on what is already known rather than restarting.
@@ -575,7 +586,7 @@ Distinguishing types of information is fundamental to trust and to the product's
 
 ### Terminology
 
-This document aligns with the "sourced facts" principle in [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--proposed). To avoid implying that everything stated in a source is objectively proven, it uses the term **sourced claim** for any statement attributable to an identified source, and reserves **verified evidence** for claims with stronger support.
+This document aligns with the "sourced facts" principle in [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--approved-potential-score-draft). To avoid implying that everything stated in a source is objectively proven, it uses the term **sourced claim** for any statement attributable to an identified source, and reserves **verified evidence** for claims with stronger support.
 
 | Category | Definition | Examples | Required handling |
 |---|---|---|---|
@@ -603,7 +614,7 @@ This document aligns with the "sourced facts" principle in [PRODUCT_DEFINITION.m
 | # | Stage | User | AI | Output |
 |---|---|---|---|---|
 | 1 | Research Request | Describes problem, objective, question, or area of interest in natural language | Receives request | Research request |
-| 2 | Interpretation & Planning | Answers questions / approves plan **only if needed** | Interprets objective, scope, directions, vocabulary, sources, ambiguities; applies hybrid rules | Interpretation + assumptions, **or** 1–3 questions, **or** research plan |
+| 2 | Interpretation & Planning | Answers questions / approves plan **only if needed** (plan approval required for complex research) | Interprets objective, scope, directions, vocabulary, sources, ambiguities; applies hybrid rules | Interpretation + assumptions, **or** 1–3 questions, **or** research plan awaiting approval |
 | 3 | Deep Research & Discovery | Decides on proposed out-of-scope directions | Searches accessible sources; discovers technologies and evidence; iterates; expands within scope | Sourced body of findings |
 | 4 | Technical Analysis | — | Analyzes mechanisms, performance, maturity, feasibility, limitations, risks, evidence quality; separates sourced claims and evidence from interpretation | Analyzed technology information |
 | 5 | Synthesis & Evaluation | — | Organizes, compares, prioritizes; identifies opportunities, patterns, gaps; provisional assessment only | Comparative, justified synthesis |
@@ -612,21 +623,13 @@ This document aligns with the "sourced facts" principle in [PRODUCT_DEFINITION.m
 
 **In one sentence:** The user states a research need; the AI interprets it, asks only what materially matters, researches and critically analyzes the evidence, and delivers a traceable Technology Scouting Report — then continues the research under the user's expert direction.
 
-> This summary describes the target journey, not the finalized MVP scope (see [Document Scope](#document-scope)).
+> This summary describes the target journey, not the MVP scope, which is defined in [MVP_SCOPE.md](MVP_SCOPE.md) (see [Document Scope](#document-scope)).
 
 ---
 
 ## 14. Open Items
 
-The following items are **not finalized** and were not assumed in this document:
-
-### General
-
-| Item | Status |
-|---|---|
-| MVP scope (which journey capabilities are included) | PROPOSED — determined during MVP scope refinement |
-| Recording the hybrid interaction decision in the Product Definition decision log | Recommended (e.g., as D8) |
-| Recording the 7-stage journey in the Product Definition decision log | Agreed working model; recording pending (e.g., as D9) |
+The following items are **not finalized** and were not assumed in this document. Approved decisions referenced for context are labeled as such. MVP-relevant open items are also listed in [MVP_SCOPE.md, Section 9](MVP_SCOPE.md#9-open-items).
 
 ### Clarification & Interaction Behavior
 
@@ -646,7 +649,7 @@ The following items are **not finalized** and were not assumed in this document:
 
 | Item | Status |
 |---|---|
-| Research stopping criteria (when to stop searching and move to synthesis) | OPEN ITEM — no thresholds assumed |
+| Research stopping criteria (when to stop searching and move to synthesis) | OPEN ITEM — stopping principle APPROVED ([Section 11](#11-iterative-research--feedback-loops)); criteria and thresholds not defined; no thresholds assumed |
 | Low-evidence research path | PROPOSED |
 | Output form for low-evidence outcomes (full report, shortened report, interim notice) | OPEN ITEM |
 | Criteria for treating a sourced claim as verified evidence | OPEN ITEM |
@@ -656,16 +659,16 @@ The following items are **not finalized** and were not assumed in this document:
 | Item | Status |
 |---|---|
 | Research plan format | DRAFT |
-| Technology Potential Score / any scoring framework | DRAFT — provisional only |
-| Maturity framework (e.g., TRL) | Not decided |
-| Report structure and expected report contents | PROPOSED |
-| Technology profile fields | PROPOSED |
+| Technology Potential Score / any scoring framework | DRAFT — provisional only; universal scoring excluded from the MVP; formal weighted scoring model DEFERRED |
+| Broader maturity framework | OPEN ITEM — TRL may be used when relevant and evidence-supported (APPROVED, [MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)) |
+| Expected report contents (detailed section content) | PROPOSED — report structure itself APPROVED ([Section 9](#9-stage-6--research-report-generation)) |
+| Technology profile fields | PROPOSED (Technology Profile as a report element APPROVED) |
 | Marking of facts, interpretation, assumptions, uncertainty in outputs | To be defined |
-| Follow-up output form (revised report vs. supplement vs. conversational answer) | Not decided |
+| Format of requested report updates (revised report vs. supplement) | OPEN ITEM — exploratory follow-up does not modify the main report; updates on user request (APPROVED, [MVP_SCOPE.md, C8](MVP_SCOPE.md#c8--interactive-research--follow-up)) |
 | Specific information sources and source access strategy | To be defined (Phase 2) |
 | Progress visibility during research | PROPOSED |
 | Optional structured request input | PROPOSED |
 | Research depth / effort limits per request | To be defined |
-| Report export and presentation formats | To be defined |
+| Specific export formats and report length options | OPEN ITEM — in-app presentation and initially limited export capability APPROVED |
 | Saved research projects and history across sessions | FUTURE |
-| Continuous monitoring | Not planned for MVP (long-term vision only) |
+| Continuous monitoring | OUT OF SCOPE for the MVP ([MVP_SCOPE.md, Section 7](MVP_SCOPE.md#7-mvp-exclusions--out-of-scope)); long-term vision only |

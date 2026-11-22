@@ -14,6 +14,9 @@
 > - **DEFERRED** — Part of the capability's long-term direction, but planned for future product development, not the initial MVP.
 > - **OUT OF SCOPE** — Explicitly excluded from the initial MVP.
 > - **OPEN ITEM** — Unresolved decision, deliberately left undecided.
+> - **DRAFT** — Working concept under development; content may still change.
+> - **FUTURE** — Possible later capability, explicitly outside the current scope.
+> - **DECIDED / ACCEPTED** — Used only when citing the status a decision carries in its source document (e.g., D8 in CORE_USER_JOURNEY.md, the use case set in USE_CASES.md).
 >
 > **Within each capability, approved content is classified as:**
 >
@@ -51,12 +54,12 @@
 
 ## 1. Purpose of This Document
 
-This document formalizes the **approved MVP scope** of TechScout AI. It addresses Next Step 4 in [PRODUCT_DEFINITION.md, Section 18](PRODUCT_DEFINITION.md#18-next-steps) ("Refine and approve the MVP scope") and supersedes the PROPOSED MVP direction in [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-direction--proposed) as the reference for MVP scope.
+This document formalizes the **approved MVP scope** of TechScout AI and is the **authoritative reference for MVP scope** (recorded as D11). It fulfills the product definition activity "Refine and approve the MVP scope", now listed as completed in [PRODUCT_DEFINITION.md, Section 18](PRODUCT_DEFINITION.md#18-next-steps). [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-scope--approved) summarizes the approved scope and references this document.
 
 It is intended as the reference for:
 
-- functional and non-functional requirements (Next Step 5),
-- success metrics and evaluation (Next Step 6),
+- functional and non-functional requirements,
+- success metrics and evaluation,
 - architecture and technical design (Phase 2),
 - backlog definition and iteration planning (Phase 3).
 
@@ -81,8 +84,8 @@ The MVP builds on the following confirmed foundations:
 
 | Foundation | Source |
 |---|---|
-| D1–D7 product decisions | [PRODUCT_DEFINITION.md, Section 17](PRODUCT_DEFINITION.md#17-current-status) |
-| Hybrid AI interaction model (R1–R7) — DECIDED | [CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided) |
+| D1–D12 product decisions | [PRODUCT_DEFINITION.md, Section 17](PRODUCT_DEFINITION.md#17-current-status) |
+| Hybrid AI interaction model (R1–R7, including the R4 approval gate for complex research) — DECIDED (D8) | [CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided) |
 | 7-stage core user journey — agreed working model | [CORE_USER_JOURNEY.md, Section 2](CORE_USER_JOURNEY.md#2-journey-overview) |
 | 7 core use cases (UC01–UC07) — ACCEPTED | [USE_CASES.md](USE_CASES.md) |
 | Cross-cutting requirements CC1–CC10 | [USE_CASES.md, Section 6](USE_CASES.md#6-cross-cutting-requirements) |
@@ -125,6 +128,8 @@ All eight capabilities are **APPROVED** as part of the MVP scope. No capability 
 | C6 | Technology Assessment & Evaluation | What is their potential, maturity, and risk? | Primarily qualitative, evidence-backed assessment; no universal scoring |
 | C7 | Evidence Synthesis & Report Generation | What is the structured, traceable result? | One adaptive report format with three reading layers |
 | C8 | Interactive Research & Follow-up | How does the expert direct further research? | Conversational follow-up within the session context |
+
+> **Analytical layers — APPROVED:** Technical Analysis, Comparative Analysis, and Technology Assessment are **distinct analytical layers**, even when combined within a single capability (C5 covers technical and comparative analysis; C6 covers technology assessment) or a single research workflow stage. They are reflected in separate report sections (Detailed Technology Analysis, Comparative Analysis, Assessment & Opportunities).
 
 ### 4.2 Relationship to the Core User Journey
 
@@ -189,7 +194,7 @@ Each capability is described with:
 
 - Single natural-language input (no mandatory structured form)
 - The AI decides whether to **proceed autonomously**, **ask for clarification**, or **propose a research plan**
-- A research plan is shown **only when useful** for complex requests
+- For complex requests, a research plan is presented for user review and approval; the main research execution begins **after approval** and then proceeds autonomously (approval gate for complex research only)
 
 #### Deferred
 
@@ -198,7 +203,7 @@ Each capability is described with:
 
 #### Notes
 
-- Implements hybrid interaction rules R1–R4 ([CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided)): clear request → proceed; minor gaps → assume and disclose; important ambiguities → 1–3 targeted questions; very broad or complex → research plan.
+- Implements hybrid interaction rules R1–R4 ([CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided)): clear request → proceed; minor gaps → assume and disclose; important ambiguities → 1–3 targeted questions; very broad or complex → research plan with an approval gate (see Simplified Implementation above); after approval, expansion follows R5 and R6.
 - For UC04 and UC07, the requirements of the existing technology or target application are a typical source of important ambiguity (R3).
 - Optional structured input fields remain **PROPOSED** (CORE_USER_JOURNEY.md, Stage 1).
 - Thresholds for "broad or complex" requests and research plan presentation details are **OPEN ITEMS** (see [Section 9](#9-open-items)).
@@ -282,7 +287,7 @@ Each capability is described with:
 
 - Supports the discovery loop and evidence gap loop described in [CORE_USER_JOURNEY.md, Section 11](CORE_USER_JOURNEY.md#11-iterative-research--feedback-loops).
 - Research expansion follows R5 (within scope: expand autonomously and disclose) and R6 (outside scope: propose to the user).
-- "Adaptive stopping criteria" is approved as the **approach**; the actual criteria and research depth thresholds remain **OPEN ITEMS** (see [Section 9](#9-open-items)).
+- **Stopping principle — APPROVED:** Research is iterative and autonomous; the agent stops when further research is no longer sufficiently valuable or when adequate coverage has been achieved. "Adaptive stopping criteria" is approved as the **approach**; the precise criteria and research depth thresholds remain **OPEN ITEMS** (see [Section 9](#9-open-items)).
 - The internal structures for sources, findings, evidence, and gaps are approved as a concept; their design belongs to Phase 2.
 
 ---
@@ -417,7 +422,7 @@ Each capability is described with:
 
 #### Notes
 
-- Follows the assessment principles in [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--proposed): justified with evidence, presented as AI assessment rather than objective fact, uncertainties disclosed, missing data not treated as negative evidence.
+- Follows the assessment principles in [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--approved-potential-score-draft): justified with evidence, presented as AI assessment rather than objective fact, uncertainties disclosed, missing data not treated as negative evidence.
 - The approval of "no arbitrary universal scoring" and the deferral of a formal weighted scoring model mean the draft **Technology Potential Score** is **not** part of the MVP in its scored form. Whether and how potential is expressed beyond qualitative assessment remains an **OPEN ITEM**.
 - TRL use "when relevant and evidence-supported" is approved; the broader maturity framework (e.g., how maturity is expressed where TRL does not fit, such as software or AI models) remains an **OPEN ITEM**.
 - Feasibility assessments (UC07) are initial and must not be presented as proof of feasibility.
@@ -463,7 +468,7 @@ Each capability is described with:
 
 #### Adaptive Report Structure — APPROVED
 
-> **Status: APPROVED** — The 9-section adaptive report structure was reviewed and accepted during product definition. It supersedes the PROPOSED structure in [PRODUCT_DEFINITION.md, Section 10](PRODUCT_DEFINITION.md#10-standard-research-report--proposed), which has not yet been updated. It is **adaptive**: not every section is mandatory for every research request.
+> **Status: APPROVED** — The 9-section adaptive report structure was reviewed and accepted during product definition. It replaces the earlier proposed structure and is recorded as D12; [PRODUCT_DEFINITION.md, Section 10](PRODUCT_DEFINITION.md#10-standard-research-report--approved) reflects this structure and references this section. It is **adaptive**: not every section is mandatory for every research request.
 
 | # | Section | Typical content |
 |---|---|---|
@@ -482,9 +487,9 @@ The "Typical content" column is **PROPOSED** guidance only.
 #### Notes
 
 - The three reading layers are APPROVED as a concept; how they are presented (e.g., sections, expandable detail, linked evidence) is a design question for Phase 2.
-- The Standard Technology Profile is APPROVED as an MVP element; its **fields** remain **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 11](PRODUCT_DEFINITION.md#11-technology-profile--proposed)).
+- The Standard Technology Profile is APPROVED as an MVP element; its **fields** remain **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 11](PRODUCT_DEFINITION.md#11-technology-profile--approved-fields-proposed)).
 - How facts, interpretations, assumptions, and uncertainty are visually or structurally marked remains an **OPEN ITEM** (CORE_USER_JOURNEY.md, Section 12).
-- The specific export format(s) remain an **OPEN ITEM** (see [Section 9](#9-open-items)).
+- The specific export format(s) and report length options remain an **OPEN ITEM** (see [Section 9](#9-open-items)).
 
 ---
 
@@ -526,7 +531,7 @@ The "Typical content" column is **PROPOSED** guidance only.
 
 - The conversational interface serves research follow-up within the product's purpose; it does not make TechScout AI a general-purpose chatbot (D7).
 - Context retention is approved at **session** level. Saving and reopening research across sessions remains **FUTURE** (CORE_USER_JOURNEY.md, Stage 7).
-- The approved simplification partially resolves the CORE_USER_JOURNEY.md open item on follow-up output form: exploratory follow-ups produce conversational results, and the main report changes only on request. The exact form of a requested update (revised version vs. supplement) remains an **OPEN ITEM**.
+- Exploratory follow-ups produce conversational results, and the main report changes only on request (also reflected in CORE_USER_JOURNEY.md, Stage 7). The exact form of a requested update (revised version vs. supplement) remains an **OPEN ITEM**.
 - Handling of user corrections that conflict with strong evidence, and detection of context drift, remain **PROPOSED** (CORE_USER_JOURNEY.md, Stage 7).
 
 ---
@@ -660,12 +665,12 @@ The following decisions are **unresolved**. This document does **not** finalize 
 | # | Item | Context | Status |
 |---|---|---|---|
 | OI1 | **Research depth thresholds** | How deep research should go per request or use case, and how sufficient depth is determined. Adaptive depth is approved; thresholds are not. | OPEN ITEM |
-| OI2 | **Research stopping criteria** | Adaptive stopping criteria are approved as the approach (C3); the actual criteria are not defined. No thresholds are assumed. | OPEN ITEM |
+| OI2 | **Research stopping criteria** | The stopping principle (stop when further research is no longer sufficiently valuable or adequate coverage is achieved) and adaptive stopping criteria as the approach are approved (C3); the precise criteria are not defined. No thresholds are assumed. | OPEN ITEM |
 | OI3 | **Evidence scoring / calibration** | How evidence strength and source credibility are rated, combined, and calibrated; criteria for treating a sourced claim as verified evidence. | OPEN ITEM |
 | OI4 | **Technology maturity framework** | TRL is used when relevant and evidence-supported (approved); how maturity is expressed where TRL does not apply (e.g., software, AI models) is not defined. | OPEN ITEM |
 | OI5 | **Technology Potential scoring** | Universal arbitrary scoring is excluded and a formal weighted model is deferred; whether and how potential is expressed beyond qualitative assessment is not defined. | OPEN ITEM (Technology Potential Score remains DRAFT) |
-| OI6 | **Research plan presentation details** | When a plan is "useful", plan format, and behavior on plan rejection or modification. | OPEN ITEM |
-| OI7 | **Report export formats** | "Initially limited export format(s)" is approved; which formats are not defined. | OPEN ITEM |
+| OI6 | **Research plan presentation details** | The approval gate for complex research is decided (D8, C1). Open: thresholds for when a request is complex enough to require a plan (R4), plan format, and behavior on plan rejection or modification. | OPEN ITEM |
+| OI7 | **Report export formats and length options** | In-app presentation and "initially limited export format(s)" are approved; which formats, and any report length options, are not defined. | OPEN ITEM |
 | OI8 | **Source access strategy and constraints** | Which sources and search mechanisms are used, access constraints, and handling of paywalled content. | OPEN ITEM (Phase 2) |
 | OI9 | **Session context implementation details** | How session context (objective, assumptions, sources, findings, corrections) is retained and used. | OPEN ITEM (Phase 2) |
 | OI10 | **MVP evaluation methodology** | How success criteria are evaluated, by whom, with which test requests, and whether targets are set. | OPEN ITEM |
@@ -682,7 +687,7 @@ These remain unresolved and are relevant to MVP implementation:
 | Out-of-scope request handling and its boundary | CORE_USER_JOURNEY.md §5 | PROPOSED / OPEN ITEM |
 | Low-evidence research path and its output form | CORE_USER_JOURNEY.md §11 | PROPOSED / OPEN ITEM |
 | Marking of facts, interpretation, assumptions, and uncertainty in outputs | CORE_USER_JOURNEY.md §12 | OPEN ITEM |
-| Form of a requested report update after follow-up (revised version vs. supplement) | CORE_USER_JOURNEY.md §10; partially resolved by C8 | OPEN ITEM |
+| Form of a requested report update after follow-up (revised version vs. supplement) | CORE_USER_JOURNEY.md §10; C8 | OPEN ITEM |
 | Handling of user corrections that conflict with strong evidence; context drift detection | CORE_USER_JOURNEY.md §10 | PROPOSED |
 | Research effort limits per request (time, cost) | CORE_USER_JOURNEY.md §11 | OPEN ITEM |
 | Progress visibility during research | CORE_USER_JOURNEY.md §6 | PROPOSED |
@@ -695,18 +700,23 @@ These remain unresolved and are relevant to MVP implementation:
 
 ## 10. Alignment with Existing Documents
 
-> **Status: Recommendations only.** In line with the scope of this task, **no existing document has been modified**. The following updates are recommended to keep the documentation consistent.
+> **Status:** Recommendations A1–A8 were originally recorded when this document was created. Those fulfilled by the approved documentation alignment are marked **Completed**. Recommendations marked **Not applied** still require a decision and must not be treated as approved.
 
-| # | Document | Recommended update |
-|---|---|---|
-| A1 | PRODUCT_DEFINITION.md §14, §17 | Update "MVP scope" status from PROPOSED to APPROVED and reference this document. |
-| A2 | PRODUCT_DEFINITION.md §17 | Record the approved MVP scope in the decision log (e.g., as a new decision), alongside the pending hybrid interaction (D8) and 7-stage journey (D9) entries recommended in CORE_USER_JOURNEY.md. |
-| A3 | PRODUCT_DEFINITION.md §6 | The Target Domains list predates the Domain Neutrality requirement and does not name AI/LLMs, software and digital products, agent frameworks, or biotech. Consider aligning it with [Section 6.2](#62-domain-neutrality-by-design). |
-| A4 | PRODUCT_DEFINITION.md §12 | Reflect that a formal weighted scoring model is deferred and arbitrary universal scoring is excluded from the MVP. |
-| A5 | PRODUCT_DEFINITION.md §14 | "Multi-agent architecture from the beginning" (not planned) is now formalized as X6 and the C3 iterative-loop simplification. |
-| A6 | CORE_USER_JOURNEY.md §10, §14 | Note that the follow-up output form is partially resolved by C8 (exploratory follow-up does not modify the main report; updates on request). |
-| A7 | CORE_USER_JOURNEY.md §7, USE_CASES.md UC07 | Note that TRL use "when relevant and evidence-supported" is approved, while the broader maturity framework remains open (OI4). |
-| A8 | USE_CASES.md §2.1, §7 | Note that all seven use cases are supported by the approved MVP capability set; prioritization remains open. |
+| # | Document | Recommended update | Status |
+|---|---|---|---|
+| A1 | PRODUCT_DEFINITION.md §14, §17 | Update "MVP scope" status from PROPOSED to APPROVED and reference this document. | Completed |
+| A2 | PRODUCT_DEFINITION.md §17 | Record the approved MVP scope in the decision log, alongside the hybrid interaction (D8) and 7-stage journey (D9) entries recommended in CORE_USER_JOURNEY.md. | Completed — recorded as D8–D12 |
+| A3 | PRODUCT_DEFINITION.md §6 | Align the Target Domains list with the Domain Neutrality requirement ([Section 6.2](#62-domain-neutrality-by-design)), including AI/LLMs, software and digital products, agent frameworks, and biotech. | Completed |
+| A4 | PRODUCT_DEFINITION.md §12 | Reflect that a formal weighted scoring model is deferred and arbitrary universal scoring is excluded from the MVP. | Completed (Technology Potential Score remains DRAFT) |
+| A5 | PRODUCT_DEFINITION.md §14 | "Multi-agent architecture from the beginning" (not planned) is formalized as X6 and the C3 iterative-loop simplification. | Completed — §14 references [Section 7](#7-mvp-exclusions--out-of-scope) |
+| A6 | CORE_USER_JOURNEY.md §10, §14 | Note that the follow-up output form is partially resolved by C8 (exploratory follow-up does not modify the main report; updates on request). | Completed (update format remains OPEN) |
+| A7 | CORE_USER_JOURNEY.md §7, USE_CASES.md UC07 | Note that TRL use "when relevant and evidence-supported" is approved, while the broader maturity framework remains open (OI4). | Completed |
+| A8 | USE_CASES.md §2.1, §7 | Note that all seven use cases are supported by the approved MVP capability set; prioritization remains open. | Completed |
+| A9 | PRODUCT_DEFINITION.md §10, §17; CORE_USER_JOURNEY.md §9, §14; USE_CASES.md §7 | Align all report structure references with the approved adaptive 9-section structure (C7), keeping detailed section content PROPOSED. | Completed |
+| A10 | CORE_USER_JOURNEY.md §3, §5, §13; USE_CASES.md §2.3; this document C1 | Reflect the R4 approval gate for complex research consistently. | Completed |
+| A11 | All product documents | Designate a single canonical open-items register (open items currently appear in CORE_USER_JOURNEY.md §14, USE_CASES.md §7, and [Section 9](#9-open-items)). | Not applied — requires decision |
+| A12 | All product documents | Harmonize status vocabulary (DECIDED, ACCEPTED, and APPROVED are currently used for confirmed items in different documents). | Not applied — requires decision |
+| A13 | This document §6.1 | Make "context and applicability" of evidence explicit in the reliability requirements. | Not applied — requires decision |
 
 ---
 
@@ -716,7 +726,7 @@ These remain unresolved and are relevant to MVP implementation:
 |---|---|
 | **Capability (C1–C8)** | An approved product capability of the MVP. Not a software module or pipeline step. |
 | **Essential / Simplified / Deferred** | Classification of approved content within each capability (see the status labels at the top of this document). |
-| **Discovery levels** | Direct, Adjacent, Exploratory, Cross-domain (C4). |
+| **Discovery levels** | Direct, Adjacent, Exploratory, Cross-domain (C4). Names APPROVED; working descriptions PROPOSED. |
 | **Reading layers** | Executive, Technical, Evidence — three integrated layers of the single adaptive report (C7). |
 | **Value types** | Measured, reported, estimated, calculated — distinguished in technical parameters and comparisons (C5). |
 | **Sourced claim / verified evidence** | As defined in [CORE_USER_JOURNEY.md, Section 12](CORE_USER_JOURNEY.md#12-facts-interpretation-assumptions--uncertainty). |

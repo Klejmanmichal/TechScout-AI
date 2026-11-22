@@ -5,12 +5,16 @@
 | Document | Product Definition |
 | Project phase | Phase 1 — Product Definition |
 | Status | Living document (in progress) |
+| Related documents | [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md), [USE_CASES.md](USE_CASES.md), [MVP_SCOPE.md](MVP_SCOPE.md) |
 
 > **Status labels used in this document**
 >
 > - **APPROVED / DECIDED** — Decisions already made. Sections without a label describe the agreed product direction.
+> - **ACCEPTED** — Agreed for product definition (used for the core use case set, see [USE_CASES.md](USE_CASES.md)).
 > - **DRAFT** — Working text under development; content may still change.
 > - **PROPOSED** — Concepts suggested for consideration that have **not** been approved.
+> - **DEFERRED** — Planned for future product development, not the initial MVP.
+> - **OPEN ITEM** — Unresolved question, deliberately left undecided.
 
 ---
 
@@ -25,11 +29,11 @@
 7. [Core Value Proposition](#7-core-value-proposition)
 8. [Long-Term Vision](#8-long-term-vision)
 9. [Problem Statement — DRAFT](#9-problem-statement--draft)
-10. [Standard Research Report — PROPOSED](#10-standard-research-report--proposed)
-11. [Technology Profile — PROPOSED](#11-technology-profile--proposed)
-12. [Technology Assessment — PROPOSED](#12-technology-assessment--proposed)
+10. [Standard Research Report — APPROVED](#10-standard-research-report--approved)
+11. [Technology Profile — APPROVED (Fields PROPOSED)](#11-technology-profile--approved-fields-proposed)
+12. [Technology Assessment — APPROVED (Potential Score DRAFT)](#12-technology-assessment--approved-potential-score-draft)
 13. [Intended User Outcome](#13-intended-user-outcome)
-14. [MVP Direction — PROPOSED](#14-mvp-direction--proposed)
+14. [MVP Scope — APPROVED](#14-mvp-scope--approved)
 15. [Product Development Approach](#15-product-development-approach)
 16. [Project Lifecycle](#16-project-lifecycle)
 17. [Current Status](#17-current-status)
@@ -39,7 +43,7 @@
 
 ## 1. Product Concept
 
-TechScout AI is an AI-powered **Innovation & Technology Scouting platform** designed to discover, monitor, research, and assess emerging technologies, innovations, scientific developments, patents, inventions, and industrial solutions across multiple domains.
+TechScout AI is an AI-powered **Innovation & Technology Scouting platform** designed to discover, monitor, research, and assess emerging technologies, innovations, scientific developments, patents, inventions, and industrial solutions across multiple domains. Continuous monitoring belongs to the long-term vision ([Section 8](#8-long-term-vision)); the initial MVP researches on demand (D4).
 
 ## 2. Product Vision
 
@@ -118,13 +122,20 @@ An **AI-powered research and technology scouting assistant** that amplifies the 
 
 ## 6. Target Domains
 
+TechScout AI is **domain-agnostic** (D1–D3). The domains below are illustrative examples, not an exhaustive or prioritized list. Research methods, criteria, sources, and depth adapt to the subject (see [MVP_SCOPE.md, Section 6.2](MVP_SCOPE.md#62-domain-neutrality-by-design)).
+
 - Emerging and disruptive technologies
 - Industrial and manufacturing innovations
+- Engineering and deep tech
 - Scientific research and publications
 - Patents and inventions
 - Materials science and sustainability
+- Chemistry and polymers
 - Energy and environmental technologies
 - Automation, robotics and digital technologies
+- AI, large language models (LLMs), and agent frameworks
+- Software and digital products
+- Biotechnology
 - Technology trends and cross-domain innovation
 
 ## 7. Core Value Proposition
@@ -142,7 +153,7 @@ Evolve into an intelligent technology scouting agent capable of:
 - identifying emerging signals and trends, and
 - supporting innovation opportunity assessment and strategic decision-making.
 
-> **Note:** This describes the long-term direction only. Continuous monitoring is explicitly not planned for the initial MVP (see [Section 14](#14-mvp-direction--proposed)).
+> **Note:** This describes the long-term direction only. Continuous monitoring is explicitly not planned for the initial MVP (see [Section 14](#14-mvp-scope--approved) and [MVP_SCOPE.md, Section 7](MVP_SCOPE.md#7-mvp-exclusions--out-of-scope)).
 
 ---
 
@@ -169,31 +180,33 @@ Existing general-purpose AI tools can accelerate research, but technology scouti
 
 ---
 
-## 10. Standard Research Report — PROPOSED
+## 10. Standard Research Report — APPROVED
 
-> **Status: PROPOSED** — The report structure has not been approved.
+> **Status: APPROVED** — The adaptive 9-section report structure is approved (D12). The authoritative definition is [MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation). It replaces the earlier proposed structure previously documented in this section.
+>
+> Detailed content within each section remains **PROPOSED**.
 
-The main product output is a **structured Technology Scouting Report**, not merely a chatbot response.
+The main product output is a **structured Technology Scouting Report**, not merely a chatbot response (D5).
 
-> The principle that a structured, evidence-based report is the core product output is **decided** (see [Section 17](#17-current-status)). The specific structure below remains **proposed**.
-
-### Proposed Report Structure
+### Approved Report Structure
 
 1. Executive Summary
-2. Technology Landscape
-3. Individual Technology Profiles
-4. Technology Maturity Assessment
-5. Applications & Opportunities
-6. Limitations, Risks & Challenges
-7. Sources & Supporting Evidence
-8. Technology Trends & Development Outlook
-9. Technology Potential Assessment & Recommendations
+2. Research Scope & Approach
+3. Technology Landscape & Discovery
+4. Detailed Technology Analysis
+5. Comparative Analysis
+6. Assessment & Opportunities
+7. Limitations, Risks & Knowledge Gaps
+8. Conclusions & Recommendations
+9. Sources & Supporting Evidence
+
+The structure is **adaptive**: not every section must appear in every research report.
 
 ---
 
-## 11. Technology Profile — PROPOSED
+## 11. Technology Profile — APPROVED (Fields PROPOSED)
 
-> **Status: PROPOSED** — The profile fields have not been approved.
+> **Status:** The Technology Profile itself is an **APPROVED report element** of the MVP (see [MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation)). The profile **fields** below are **PROPOSED** and have not been approved.
 
 Each identified technology should include the following information, **where available**:
 
@@ -216,9 +229,14 @@ Each identified technology should include the following information, **where ava
 
 ---
 
-## 12. Technology Assessment — PROPOSED
+## 12. Technology Assessment — APPROVED (Potential Score DRAFT)
 
-> **Status: PROPOSED / DRAFT** — The Technology Potential Score is a draft concept and has **not** been finalized.
+> **Status:**
+>
+> - **APPROVED:** Technology assessment is an MVP capability — C6, Technology Assessment & Evaluation ([MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)). MVP assessment is primarily qualitative.
+> - **Excluded from the MVP:** Universal scoring.
+> - **DEFERRED:** A formal weighted technology scoring model.
+> - **DRAFT:** The Technology Potential Score and the scoring dimensions below are a draft concept and have **not** been finalized.
 
 ### Potential Scoring Dimensions
 
@@ -230,7 +248,7 @@ Each identified technology should include the following information, **where ava
 | Growth Momentum |
 | Strategic Relevance |
 
-### Assessment Principles
+### Assessment Principles — APPROVED
 
 - Scores should be accompanied by **justification and supporting evidence**.
 - Scoring is an **AI assessment, not an objective fact**.
@@ -263,25 +281,32 @@ Reflecting the confirmed technical target users (see [Section 4](#4-target-users
 
 ---
 
-## 14. MVP Direction — PROPOSED
+## 14. MVP Scope — APPROVED
 
-> **Status: PROPOSED** — The MVP scope has not been approved.
+> **Status: APPROVED** — The MVP scope is approved (D11). The authoritative definition is [MVP_SCOPE.md](MVP_SCOPE.md). It defines eight capability areas (C1–C8) with Essential, Simplified, and Deferred implementation levels, plus mandatory cross-cutting requirements, explicit exclusions, proposed success criteria, and open items.
 >
-> **Decided:** The initial MVP is intended to research **on demand**, rather than continuously monitor the world (see [Section 17](#17-current-status)).
+> **Decided:** The initial MVP is intended to research **on demand**, rather than continuously monitor the world (D4).
 
-The initial MVP should focus on conducting research on demand and producing a useful, structured, source-supported technology scouting report.
+The initial MVP focuses on conducting research on demand, producing a useful, structured, source-supported Technology Scouting Report, and supporting context-aware follow-up research.
 
-### Potential MVP Capabilities
+### MVP Capability Areas
 
-1. User submits a research question
-2. AI performs research across relevant information sources
-3. AI identifies and organizes technologies
-4. AI analyzes and compares findings
-5. AI generates a structured report
-6. Sources and supporting evidence are visible and traceable
-7. User can explore technology details further
+| ID | Capability |
+|---|---|
+| C1 | Research Request Understanding |
+| C2 | Multi-Source Research & Discovery |
+| C3 | Deep Research & Investigation |
+| C4 | Technology & Solution Discovery |
+| C5 | Technical Analysis & Comparison |
+| C6 | Technology Assessment & Evaluation |
+| C7 | Evidence Synthesis & Report Generation |
+| C8 | Interactive Research & Follow-up |
 
-### Not Currently Planned for the Initial MVP
+See [MVP_SCOPE.md, Section 5](MVP_SCOPE.md#5-approved-mvp-capabilities) for the scope of each capability.
+
+### Not Planned for the Initial MVP
+
+The following items were identified early in product definition. They are formalized, together with further exclusions, in [MVP_SCOPE.md, Section 7](MVP_SCOPE.md#7-mvp-exclusions--out-of-scope).
 
 - Continuous 24/7 monitoring
 - Massive proprietary patent database
@@ -341,29 +366,46 @@ The project is being developed by a **solo learner** with **Claude Code** as an 
 | D6 | TechScout AI is primarily designed for **highly technical professionals and qualified specialists** (R&D, innovation, engineering, and technology management), not general consumers or casual users. |
 | D7 | TechScout AI is positioned as an **AI-powered research and technology scouting assistant that amplifies technical expertise**, not a general-purpose chatbot or simplified technology explainer. Guiding principle: *"TechScout AI should not replace technical expertise. It should amplify it."* |
 
+### Decisions Recorded in Related Documents
+
+The following decisions were made during subsequent product definition work. They are documented in detail in the referenced documents.
+
+| # | Decision | Status | Reference |
+|---|---|---|---|
+| D8 | **Hybrid AI interaction model:** the AI starts autonomously on clear requests, makes and discloses reasonable assumptions for minor gaps, and asks targeted clarification questions for material ambiguity. For **complex research**, it presents a research plan for review and approval and **waits for approval** before main research execution; after approval, research proceeds autonomously, with disclosed within-scope expansion. | DECIDED | [CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided) |
+| D9 | **7-stage core user journey**, from research request to expert review and follow-up. | Agreed working model | [CORE_USER_JOURNEY.md, Section 2](CORE_USER_JOURNEY.md#2-journey-overview) |
+| D10 | **7 core use cases** (UC01–UC07). | ACCEPTED | [USE_CASES.md](USE_CASES.md) |
+| D11 | **MVP scope:** eight capability areas (C1–C8) with Essential, Simplified, and Deferred implementation levels, cross-cutting requirements, and explicit exclusions. | APPROVED | [MVP_SCOPE.md](MVP_SCOPE.md) |
+| D12 | **Adaptive 9-section report structure.** | APPROVED | [Section 10](#10-standard-research-report--approved); [MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation) |
+
 ### Not Yet Finalized
 
 | Item | Status |
 |---|---|
-| Technology Potential Score | DRAFT — concept not finalized |
+| Technology Potential Score | DRAFT — concept not finalized; universal scoring excluded from the MVP; formal weighted scoring model DEFERRED (see [MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)) |
 | Problem statement | DRAFT |
-| Report structure | PROPOSED |
-| Technology profile fields | PROPOSED |
-| MVP scope | PROPOSED — to be refined and approved |
+| Detailed report section content | PROPOSED — report structure APPROVED (D12) |
+| Technology profile fields | PROPOSED — Technology Profile as a report element APPROVED ([MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation)) |
 | Detailed primary persona(s) | To be defined (target user group decided — see D6) |
-| Use cases | To be defined |
+| Detailed use case content | DRAFT — use case set ACCEPTED (D10) |
 | Functional requirements | To be defined |
-| Success metrics | To be defined |
+| Success metrics | PROPOSED — success criteria proposed in [MVP_SCOPE.md, Section 8](MVP_SCOPE.md#8-mvp-success-criteria--proposed); approval and evaluation methodology OPEN |
+| Further open items | See [MVP_SCOPE.md, Section 9](MVP_SCOPE.md#9-open-items) |
 
 ---
 
 ## 18. Next Steps
 
+### Completed
+
+- Core user journey defined — [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md)
+- Primary use cases defined — [USE_CASES.md](USE_CASES.md)
+- MVP scope refined and approved — [MVP_SCOPE.md](MVP_SCOPE.md)
+
+### Remaining
+
 The next product definition activities are:
 
 1. Define the detailed primary persona(s) within the confirmed target user group (see [Section 4](#4-target-users--decided)).
-2. Define the core user journey from research request to final report.
-3. Define the primary use cases.
-4. Refine and approve the MVP scope.
-5. Define functional and non-functional requirements.
-6. Define success metrics.
+2. Define functional and non-functional requirements.
+3. Define success metrics — success criteria are PROPOSED in [MVP_SCOPE.md, Section 8](MVP_SCOPE.md#8-mvp-success-criteria--proposed); their approval and the MVP evaluation methodology remain OPEN.

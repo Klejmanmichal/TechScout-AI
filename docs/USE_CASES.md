@@ -5,16 +5,17 @@
 | Document | Core Use Cases |
 | Project phase | Phase 1 — Product Definition |
 | Status | Living document (in progress) |
-| Related documents | [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md), [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md) |
+| Related documents | [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md), [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md), [MVP_SCOPE.md](MVP_SCOPE.md) |
 
 > **Status labels used in this document** (consistent with [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md) and [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md))
 >
 > - **ACCEPTED** — Agreed for product definition.
+> - **APPROVED / DECIDED** — Confirmed product decisions referenced from related documents (e.g., [MVP_SCOPE.md](MVP_SCOPE.md)).
 > - **DRAFT** — Working text under development; content may still change.
 > - **PROPOSED** — Concepts suggested for consideration that have **not** been approved.
 > - **OPEN ITEM** — Unresolved question, deliberately left undecided.
 >
-> The **7 core use cases** are **ACCEPTED** as the core use case set for product definition. They are not yet recorded in the [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md#17-current-status) decision log. Detailed content within each use case (research elements, expected outcomes, considerations) is **DRAFT** unless labeled otherwise.
+> The **7 core use cases** are **ACCEPTED** as the core use case set for product definition. They are recorded in the [PRODUCT_DEFINITION.md](PRODUCT_DEFINITION.md#17-current-status) decision log as D10. Detailed content within each use case (research elements, expected outcomes, considerations) is **DRAFT** unless labeled otherwise.
 
 ---
 
@@ -34,9 +35,8 @@
 
 This document defines the **core use cases** of TechScout AI: the principal research objectives that its target users want to achieve with the product.
 
-It addresses Next Step 3 in [PRODUCT_DEFINITION.md, Section 18](PRODUCT_DEFINITION.md#18-next-steps) ("Define the primary use cases") and is intended as a reference for:
+It fulfills the product definition activity "Define the primary use cases", now listed as completed in [PRODUCT_DEFINITION.md, Section 18](PRODUCT_DEFINITION.md#18-next-steps). It informed the approved MVP scope ([MVP_SCOPE.md](MVP_SCOPE.md)) and remains a reference for:
 
-- MVP scope refinement,
 - functional and non-functional requirements,
 - acceptance criteria and evaluation,
 - later technical design.
@@ -51,8 +51,8 @@ The document describes **what** users want to achieve. It does **not** describe 
 
 > **Important:**
 >
-> - This document describes the core use cases of the **intended product**. It does **not** define the finalized MVP scope, which remains **PROPOSED** (see [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-direction--proposed)).
-> - Which use cases, and to what depth, are included in the MVP will be determined during **MVP scope refinement**.
+> - This document describes the core use cases of the **intended product**. It does **not** define the MVP scope, which is **APPROVED** and defined in [MVP_SCOPE.md](MVP_SCOPE.md) (see also [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-scope--approved)).
+> - MVP scope refinement is complete. All seven use cases are supported by the approved MVP capability set (see [MVP_SCOPE.md, Section 4.3](MVP_SCOPE.md#43-relationship-to-core-use-cases)); prioritization among use cases remains an **OPEN ITEM** (see [Section 7](#7-open-questions-and-future-refinement)).
 > - Use cases describe user objectives, not software features, modules, or architecture.
 
 ### 2.2 Target Users
@@ -66,8 +66,8 @@ All use cases are designed for the confirmed target users (D6): **highly technic
   > *"TechScout AI should not replace technical expertise. It should amplify it."*
 
 - **Research tool, not a chatbot:** Every use case results in structured, evidence-supported research outcomes, with the **Technology Scouting Report** as the core output (D5).
-- **On-demand research (D4):** Use cases are initiated by a user research request; continuous monitoring is not part of the initial MVP direction.
-- **Hybrid AI interaction (DECIDED):** All use cases follow the hybrid interaction model defined in [CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided): the AI asks only questions that materially improve the research outcome; otherwise it makes reasonable assumptions, discloses them, and proceeds.
+- **On-demand research (D4):** Use cases are initiated by a user research request; continuous monitoring is out of scope for the initial MVP (see [MVP_SCOPE.md, Section 7](MVP_SCOPE.md#7-mvp-exclusions--out-of-scope)).
+- **Hybrid AI interaction (DECIDED):** All use cases follow the hybrid interaction model defined in [CORE_USER_JOURNEY.md, Section 3](CORE_USER_JOURNEY.md#3-hybrid-interaction-principles--decided): the AI asks only questions that materially improve the research outcome; otherwise it makes reasonable assumptions, discloses them, and proceeds. For complex research, it presents a research plan and waits for user approval before main research execution (R4).
 - **Common journey:** All use cases follow the same 7-stage core user journey (see [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md)). Use cases differ in research objective and emphasis, not in the fundamental journey.
 
 ---
@@ -138,6 +138,7 @@ A structured overview of the technology landscape in the specified area, enablin
 - **Relevance over volume:** Results should be filtered for relevance to the user's objective rather than maximizing the number of technologies listed.
 - **Novelty claims:** Descriptions such as "breakthrough" or "disruptive" are AI interpretations and must be justified with evidence, not adopted from promotional sources.
 - **Discovery bias:** Well-publicized technologies may be over-represented; less visible but relevant developments should not be systematically missed.
+- **Discovery levels:** Candidates may span the four discovery levels — Direct, Adjacent, Exploratory, and Cross-domain (see [MVP_SCOPE.md, C4](MVP_SCOPE.md#c4--technology--solution-discovery)).
 
 ---
 
@@ -233,7 +234,7 @@ A structured, evidence-supported comparison that clarifies the relative strength
 - **No misleading comparisons:** Options must not appear superior merely because more or more favorable information is available about them.
 - **Information gaps:** Missing data for one option must be identified as a gap, not treated as a disadvantage.
 - **Cost data:** Cost should be included only where reliable information is available, with its source and limitations disclosed.
-- **Provisional scoring:** Any scoring or ranking used in comparisons remains provisional (see [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--proposed)).
+- **Provisional scoring:** Any scoring or ranking used in comparisons remains provisional (see [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--approved-potential-score-draft)). Universal scoring is excluded from the MVP (see [MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)).
 
 ---
 
@@ -275,6 +276,7 @@ A set of evidence-supported substitution candidates, each assessed against the r
 - **Requirements first:** Substitution is only meaningful relative to the requirements the existing technology fulfills. Where these are unclear and materially affect the outcome, they are an important ambiguity under the hybrid interaction rules (R3).
 - **Partial equivalence:** Alternatives may satisfy some but not all requirements; this must be stated explicitly rather than implying full equivalence.
 - **Non-obvious alternatives:** Unconventional candidates should be clearly identified as such, with the supporting reasoning and evidence level stated.
+- **Discovery levels:** Substitution candidates may span the four discovery levels — Direct, Adjacent, Exploratory, and Cross-domain (see [MVP_SCOPE.md, C4](MVP_SCOPE.md#c4--technology--solution-discovery)).
 
 ---
 
@@ -313,7 +315,7 @@ A structured view of who is active in the field, which directions are being purs
 
 - **Evidence vs. interpretation:** The AI must distinguish established evidence (e.g., that a publication or patent exists) from interpretations about research activity, technological direction, or potential opportunities.
 - **White spaces are hypotheses:** An apparent gap may reflect limited source coverage rather than a true absence of activity, and must be presented as an interpretation.
-- **Source coverage:** Results depend on accessible sources. A massive proprietary patent database is not planned for the initial MVP (see [PRODUCT_DEFINITION.md, Section 14](PRODUCT_DEFINITION.md#14-mvp-direction--proposed)); coverage limitations must be disclosed.
+- **Source coverage:** Results depend on accessible sources. A massive proprietary patent database and full integration with paid patent and scientific databases are not part of the initial MVP (see [MVP_SCOPE.md, C2 and Section 7](MVP_SCOPE.md#7-mvp-exclusions--out-of-scope)); coverage limitations must be disclosed.
 - **Not legal advice:** Landscape insights are research support; they do not constitute legal assessments such as freedom-to-operate or patent validity opinions.
 
 ---
@@ -355,6 +357,7 @@ A set of potential opportunities and innovation directions, each with its suppor
 - **Documented vs. hypothetical:** The AI must clearly distinguish documented applications from AI-generated hypotheses and speculative opportunities.
 - **Hypotheses are starting points:** Opportunities are proposals for further investigation, not validated conclusions.
 - **Expert judgment:** This use case relies especially on the user's expertise to evaluate the plausibility and value of AI-generated hypotheses.
+- **Discovery levels:** This use case draws in particular on the Exploratory and Cross-domain discovery levels (see [MVP_SCOPE.md, C4](MVP_SCOPE.md#c4--technology--solution-discovery)).
 
 ---
 
@@ -396,7 +399,7 @@ An initial, evidence-supported view of technical feasibility, identifying what s
 - **Not proof of feasibility:** The AI must not present an initial assessment as proof of feasibility.
 - **Explicit uncertainty:** Uncertainty, assumptions, missing information, and required validation must be clearly identified.
 - **Requirement clarity:** Feasibility depends on the specified application and requirements; where these are unclear and materially affect the result, they are an important ambiguity (R3).
-- **Maturity framework:** Whether a standard maturity framework (e.g., Technology Readiness Levels) is used remains an **OPEN ITEM** (see [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md#14-open-items)).
+- **Maturity framework:** For the MVP, Technology Readiness Levels (TRL) may be used when relevant and evidence-supported (**APPROVED**, see [MVP_SCOPE.md, C6](MVP_SCOPE.md#c6--technology-assessment--evaluation)). The broader maturity framework remains an **OPEN ITEM** (see [MVP_SCOPE.md, Section 9](MVP_SCOPE.md#9-open-items)).
 
 ---
 
@@ -430,7 +433,7 @@ In practice, the primary objective of this request is **substitution (UC04)**, s
 
 ## 6. Cross-Cutting Requirements
 
-The following principles apply to **all** use cases. They are consistent with [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--proposed) and [CORE_USER_JOURNEY.md, Section 12](CORE_USER_JOURNEY.md#12-facts-interpretation-assumptions--uncertainty).
+The following principles apply to **all** use cases. They are consistent with [PRODUCT_DEFINITION.md, Section 12](PRODUCT_DEFINITION.md#12-technology-assessment--approved-potential-score-draft) and [CORE_USER_JOURNEY.md, Section 12](CORE_USER_JOURNEY.md#12-facts-interpretation-assumptions--uncertainty).
 
 | # | Requirement | Description |
 |---|---|---|
@@ -458,13 +461,12 @@ The following areas are **not finalized** and require further definition. No dec
 | Area | Open Question | Status |
 |---|---|---|
 | Acceptance criteria | What criteria define a successful outcome for each use case? | OPEN ITEM |
-| Research depth | How deep should research go per use case, and how is sufficient depth determined? | OPEN ITEM (see also research stopping criteria in [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md#14-open-items)) |
-| Output requirements | Does each use case require specific report sections or outputs within the (PROPOSED) report structure? | OPEN ITEM |
-| Evaluation criteria | How will output quality be evaluated per use case (e.g., relevance, accuracy, traceability)? | OPEN ITEM — related to success metrics (to be defined) |
-| MVP prioritization | Which use cases, and to what depth, are included in the MVP? | OPEN ITEM — part of MVP scope refinement |
+| Research depth | How deep should research go per use case, and how is sufficient depth determined? | OPEN ITEM — stopping principle approved, criteria not defined (see [CORE_USER_JOURNEY.md](CORE_USER_JOURNEY.md#14-open-items)) |
+| Output requirements | Does each use case require specific report sections or outputs within the approved adaptive report structure ([MVP_SCOPE.md, C7](MVP_SCOPE.md#c7--evidence-synthesis--report-generation))? | OPEN ITEM |
+| Evaluation criteria | How will output quality be evaluated per use case (e.g., relevance, accuracy, traceability)? | OPEN ITEM — related to MVP success criteria (PROPOSED, [MVP_SCOPE.md, Section 8](MVP_SCOPE.md#8-mvp-success-criteria--proposed)) and evaluation methodology (OPEN) |
+| MVP prioritization | Should any use cases be prioritized in MVP testing or iteration planning? | OPEN ITEM — MVP scope refinement is complete; all use cases are supported by the approved capability set ([MVP_SCOPE.md, Section 4.3](MVP_SCOPE.md#43-relationship-to-core-use-cases)) |
 | Use case boundaries | Where exactly are the boundaries between overlapping use cases (e.g., UC01 vs. UC06, UC03 vs. UC04)? | OPEN ITEM |
 | Combined requests | How are requests spanning multiple use cases identified and reflected in outputs? | OPEN ITEM |
 | UC03 Mode B behavior | Are AI-discovered comparison candidates compared immediately or proposed first? | OPEN ITEM |
-| Maturity framework | Is a standard maturity framework (e.g., TRL) used in UC02, UC03, UC04, and UC07? | OPEN ITEM |
+| Maturity framework | What broader maturity framework applies in UC02, UC03, UC04, and UC07, beyond TRL use when relevant and evidence-supported (APPROVED)? | OPEN ITEM |
 | Additional use cases | Further use cases may be identified during product development and evaluation. | Future refinement |
-| Decision log | Recording the accepted use case set in the PRODUCT_DEFINITION.md decision log. | Recommended |
